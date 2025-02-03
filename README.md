@@ -5,5 +5,5 @@ XXX...
 - data folder: exported data from TaxRef for traits of French wild bees
   
 - script folder : 
-  - BeeFuncFiles.R : R scripts for creating BeeFunc files
+  - BeeFuncFiles.R : R scripts for the creation of BeeFunc files
   - dataDescription.R : R scripts for the production of tables and graphics used in the publication
