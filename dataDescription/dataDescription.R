@@ -149,7 +149,7 @@ CPTD_ITD <- round(NB_SPC_ITD/nb_spc_fr*100,2)
 CPTD_AFFINITE_ECOLOGIQUE <- round(NB_SPC_AFFINITE_ECOLOGIQUE/nb_spc_fr*100,2)
 CPTD_LECTISME <- round(NB_SPC_LECTISME/nb_spc_fr*100,2)
 CPTD_POLLINISATION <- round(NB_SPC_POLLINISATION/nb_spc_fr*100,2)
-CPTD_PARASITISME <- round(NB_SPC_PARASITISME/nb_spc_fr*100,2)
+CPTD_PARASITISME <- round(NB_SPC_PARASITISME/216*100,2)
 CPTD_HABITAT <- round(NB_SPC_HABITAT/nb_spc_fr*100,2)
 CPTD_NESTTYPE <- round(NB_SPC_NESTTYPE/nb_spc_fr*100,2)
 
@@ -169,9 +169,6 @@ trait_completeness_TAB_temp <- trait_completeness_TAB_temp %>%
 
 trait_completeness_TAB_temp <- left_join(trait_completeness_TAB_temp, trait_groups, by="Trait")
 
-
-### Save table----
-write.csv(trait_completeness_TAB_temp, file="trait_completeness_TAB_temp.csv")
 
 ### graph trait completeness points----
 trait_completeness_TAB_temp_plot_points <- trait_completeness_TAB_temp %>%
@@ -225,7 +222,6 @@ species_completeness_TAB <- CPTD_SPC %>%
   rename("Percentage of completeness" = "percentage") %>%
   rename("Species name" = "VALID_NAME")
 species_completeness_TAB
-write.csv(species_completeness_TAB, file="species_completeness_TAB.csv")
 
 
 
@@ -267,8 +263,6 @@ spcList <- combined_data_family %>%
   select(VALID_NAME) %>%
   distinct()
 
-write.csv(spcList, "spcList.csv")
-
 ### Number of species per family
 spc_par_fam <- combined_data_family %>%
   group_by(FAMILY) %>%
@@ -277,8 +271,6 @@ spc_par_fam <- combined_data_family %>%
 ### Completeness of traits for families
 CPTD_fam <- left_join(spc_par_fam, nb_spc_familles, by = "FAMILY") %>%
   mutate(percentage=round(nb_par_fam/nb_spc_familles*100,2))
-
-write.csv(CPTD_fam, file="CPTD_fam.csv")
 
 ### Calculation of number of species per family and trait ----
 nb_spc_famille_trait <- combined_data_family %>%
@@ -295,8 +287,6 @@ nbSpcFamTraitWide <- nb_spc_famille_trait %>%
   mutate_all(~ replace_na(., 0)) %>%
   mutate(Total = rowSums(across(where(is.numeric))))
 
-write.csv(nbSpcFamTraitWide, file="nbSpcFamTraitWide.csv")
-
 
 ### Percentage of species by family and trait ----
 
@@ -304,8 +294,6 @@ propSpcFamTraitWide <- nb_spc_famille_trait %>%
   select(FAMILY, source_file, proportion) %>%
   pivot_wider(names_from = FAMILY, values_from = proportion) %>%
   mutate_all(~ replace_na(., 0))
-
-write.csv(propSpcFamTraitWide, file="propSpcFamTraitWide.csv")
 
 ### radar chart for family by trait
 propSpcFamTraitWideRadar <- propSpcFamTraitWide %>%
@@ -589,8 +577,6 @@ spc_par_nesting <- combined_data_nesting %>%
 CPTD_nesting <- left_join(spc_par_nesting, nb_spc_familles, by = "FAMILY") %>%
   mutate(percentage=round(nb_par_fam/nb_spc_familles*100,2))
 
-write.csv(CPTD_nesting, file="CPTD_nesting.csv")
-
 ### Calculation of number of species per family and trait ----
 nb_spc_famille_nesting <- combined_data_nesting %>%
   group_by(FAMILY, source_file) %>%
@@ -606,8 +592,6 @@ nbSpcFamNestingWide <- nb_spc_famille_nesting %>%
   mutate_all(~ replace_na(., 0)) %>%
   mutate(Total = rowSums(across(where(is.numeric))))
 
-write.csv(nbSpcFamNestingWide, file="nbSpcFamNestingWide.csv")
-
 
 ### Percentage of species by family and trait ----
 
@@ -615,8 +599,6 @@ propSpcFamNestingtWide <- nb_spc_famille_trait %>%
   select(FAMILY, source_file, proportion) %>%
   pivot_wider(names_from = FAMILY, values_from = proportion) %>%
   mutate_all(~ replace_na(., 0))
-
-write.csv(propSpcFamNestingtWide, file="propSpcFamNestingtWide.csv")
 
 ##radar chart
 
@@ -678,7 +660,6 @@ for (file in filesGen) {
 
 ## concatenate
 combined_data_genus <- do.call(rbind, data_list_genus)
-write.csv(combined_data_genus, "combined_data_genus.csv")
 
 ### Number of species per genus
 
@@ -696,8 +677,6 @@ CPTD_gen <- left_join(spc_par_gen, nb_spc_genres, by = "GENUS") %>%
   select(GENUS, nbSpcGen, nb_spc_genres, percentage) %>%
   distinct()
 
-write.csv(CPTD_gen, "CPTD_gen.csv")
-
 ### Calculation of number of species per genus and trait ----
 nb_spc_genre_trait <- combined_data_genus %>%
   group_by(GENUS, source_file) %>%
@@ -713,8 +692,6 @@ nbSpcGenTraitWide <- nb_spc_genre_trait %>%
   mutate_all(~ replace_na(., 0)) %>%
   mutate(Total = rowSums(across(where(is.numeric))))
 
-write.csv(nbSpcGenTraitWide, file="nbSpcGenTraitWide.csv")
-
 
 ### Percentage of species by family and trait ----
 
@@ -722,8 +699,6 @@ propSpcGenTraitWide <- nb_spc_genre_trait %>%
   select(GENUS, source_file, proportion) %>%
   pivot_wider(names_from = source_file, values_from = proportion) %>%
   mutate_all(~ replace_na(., 0))
-
-write.csv(propSpcGenTraitWide, file="propSpcGenTraitWide.csv")
 
 
 ### TOTAL COMPLETENESS OF THE DATABASE
@@ -742,16 +717,13 @@ uniqueSpcTrait <- totalInformation %>%
   distinct() %>%
   nrow()
 
-totalCompleteness <- round(uniqueSpcTrait/(983*20)*100,2)
-
-write.csv(totalCompleteness, "totalCompleteness.csv")
-write.csv(totalInformation, "totalInformation.csv")
+#total completeness of BeeFunc (based on 983 species for every trait except for parasitic interactions, for which only the 216 parasitic species in France are considered)
+totalCompleteness <- round(uniqueSpcTrait/((983*19)+(216*1))*100,2)
 
 nbSpcBeeFunc <- totalInformation %>%
   select(VALID_NAME) %>%
   distinct() %>%
   nrow()
-write.csv(nbSpcBeeFunc, "nbSpcBeeFunc.csv")
 
 
 nbInfoAndrenidae <- totalInformation %>%
@@ -797,8 +769,6 @@ completenessFamiliesList <- c(completenessAndrenidae,completenessApidae,complete
 completenessFamilies <- data.frame(Families, completenessFamiliesList) %>%
   rename("Level of completeness (%)" = "completenessFamiliesList")
 
-write.csv(completenessFamilies, "completenessFamilies.csv")
-
 completenessGenus <- totalInformation %>%
   group_by(GENUS) %>%
   mutate(nbInfoGenus = n_distinct(VALID_NAME, source_file)) %>%
@@ -814,16 +784,8 @@ completenessGenus <- left_join(completenessGenus, nbSpcGen, by = "GENUS") %>%
   rename("Genus" = "GENUS") %>%
   rename("Level of completeness (%)" = "completenessGenus")
 
-write.csv(completenessGenus, "completenessGenus.csv")
 
-
-#radar chart for parasitic species only
-parasiticOnly <- BeeFuncNestType %>%
-  filter(NEST_TYPE == "parasite") %>%
-  group_by(FAMILY) %>%
-  mutate(nbParasiticSpecies = n_distinct(VALID_NAME)) %>%
-  select(FAMILY, nbParasiticSpecies) %>%
-  distinct()
+#radar chart for parasitic species only (146 Apidae, 32 Halictidae, 38 Megachilidae)
 
 parasiteInfos <- BeeFuncParasitism %>%
   group_by(FAMILY) %>%
@@ -831,9 +793,13 @@ parasiteInfos <- BeeFuncParasitism %>%
   select(FAMILY, nbReportedSpecies) %>%
   distinct()
 
-radarChartParasitic <- parasiticOnly %>%
-  left_join(parasiteInfos, by="FAMILY") %>%
-  mutate(proportion=round(nbReportedSpecies/nbParasiticSpecies*100, 2)) %>%
+parasiteFamille <- c(146, 32, 38)
+FAMILY <- c("Apidae", "Halictidae", "Megachilidae")
+parasiteFrance <- data.frame(FAMILY, parasiteFamille)
+
+radarChartParasitic <- parasiteInfos %>%
+  left_join(parasiteFrance, by ="FAMILY") %>%
+  mutate(proportion=round(nbReportedSpecies/parasiteFamille*100, 2)) %>%
   select(FAMILY, proportion) %>%
   pivot_wider(names_from = FAMILY, values_from = proportion) %>%
   mutate(trait = "parasitismOnly") %>%
@@ -876,7 +842,6 @@ BeeFunc_all_sources <- as_tibble(BeeFunc_all_sources)
 # create a vector with unique sources
 BeeFunc_unique_sources <- BeeFunc_all_sources %>%
   distinct()
-write.csv2(BeeFunc_unique_sources, file="BeeFunc_unique_sources.csv")
 
 # list sources from the literature
 BeeFunc_all_litterature <- BeeFunc_all_sources %>%
@@ -913,7 +878,6 @@ BeeFunc_litterature_tab <- BeeFunc_litterature_tab %>%
   rename("Reference type" ="reference_type") %>%
   rename("Number of trait information" = "number_of_trait_info") %>%
   rename("Number of references" = "number_of_references")
-write.csv2(BeeFunc_litterature_tab, file="BeeFunc_litterature_tab.csv")
 
 ## Most frequently cited sources
 citationRate <- BeeFunc_all_sources %>%
@@ -921,4 +885,3 @@ citationRate <- BeeFunc_all_sources %>%
   mutate(numberOfCitation = n()) %>%
   ungroup() %>%
   distinct()
-write.csv(citationRate, "citationRate.csv")
