@@ -172,25 +172,33 @@ trait_completeness_TAB_temp <- left_join(trait_completeness_TAB_temp, trait_grou
 
 ### graph trait completeness points----
 trait_completeness_TAB_temp_plot_points <- trait_completeness_TAB_temp %>%
-  arrange(Trait_Type, `Percentage of completeness`) %>%  # Tri au sein de chaque groupe par `Percentage of completeness`
-  mutate(Trait = factor(Trait, levels = unique(Trait))) %>%  # Définition de l'ordre des niveaux de Trait
-  ggplot(aes(x = Trait, y = `Percentage of completeness`, color = Trait)) +
-  geom_segment(aes(xend = Trait, yend = 0), color = "grey") +  # Augmenter la largeur ici
-  geom_point(size = 4) +
-  scale_colour_manual(values=palette_traits) +
+  arrange(`Trait_Type`, `Percentage of completeness`) %>%
+  group_by(`Trait_Type`) %>%
+  mutate(last_trait = ifelse(row_number() == n(), `Trait`, NA)) %>%
+  ungroup() %>%
+  mutate(`Trait` = factor(`Trait`, levels = unique(`Trait`[order(`Percentage of completeness`)]))) %>% 
+  ggplot(aes(x = `Trait`, y = `Percentage of completeness`, color = `Trait`)) +
+  geom_segment(aes(xend = `Trait`, yend = 0), color = "grey") + 
+  geom_segment(data = . %>% filter(!is.na(last_trait)), 
+               aes(x = last_trait, xend = last_trait, 
+                   y = 100, yend = `Percentage of completeness`), 
+               color = "grey90") +
+  scale_colour_manual(values = palette_traits) +
   coord_flip() +
   theme_bw() +
   theme(
     legend.position = "none",
     panel.border = element_blank(),
     panel.spacing = unit(0.1, "lines"),
-    strip.text.x = element_text(size = 10, face="bold"),  # Taille du texte des étiquettes de facettes
-    strip.background = element_rect(fill = "lightblue", color = "grey90"),  # Couleur de fond et bordure des facettes
+    strip.text.x = element_text(size = 10, face = "bold"),
+    strip.background = element_rect(fill = "lightblue", color = "grey90"),
     strip.placement = "outside"
   ) +
   xlab("") +
   ylab("Completeness (%)") +
-  facet_wrap(~Trait_Type, ncol = 1, scales = "free_y")
+  facet_wrap(~`Trait_Type`, ncol = 1, scales = "free_y") +
+  geom_point(size = 4)
+
 
 
 ### COMPLETENESS FOR SPECIES
