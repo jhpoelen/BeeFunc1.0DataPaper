@@ -21,7 +21,8 @@ BeeFuncBodyLength <- baseBeeFuncLength %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
   filter(str_count(LB_NOM, "\\S+") != 3) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncBodyLength, file="BeeFuncBodyLength.csv", row.names = FALSE)
 
 BeeFuncITD <- baseBeeFuncLength %>%
@@ -29,7 +30,8 @@ BeeFuncITD <- baseBeeFuncLength %>%
   mutate(BeeFuncID = paste0("bfITD", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncITD, file="BeeFuncITD.csv", row.names = FALSE)
 
 BeeFuncTongueLength <- baseBeeFuncLength %>%
@@ -37,105 +39,120 @@ BeeFuncTongueLength <- baseBeeFuncLength %>%
   mutate(BeeFuncID = paste0("bfTon", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncTongueLength, file="BeeFuncTongueLength.csv", row.names = FALSE)
 
 BeeFuncPhenology <- baseBeeFuncPhenology %>%
   mutate(BeeFuncID = paste0("bfPhe", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncPhenology, file="BeeFuncPhenology.csv", row.names = FALSE)
 
 BeeFuncVoltinism <- baseBeeFuncVoltinism %>%
   mutate(BeeFuncID = paste0("bfVol", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncVoltinism, file="BeeFuncVoltinism.csv", row.names = FALSE)
 
 BeeFuncSociality <- baseBeeFuncSociality %>%
   mutate(BeeFuncID = paste0("bfSoc", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncSociality, file="BeeFuncSociality.csv", row.names = FALSE)
 
 BeeFuncBiogeographicalStatus <- baseBeeFuncBiogeographicalStatus %>%
   mutate(BeeFuncID = paste0("bfBio", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncBiogeographicalStatus, file="BeeFuncBiogeographicalStatus.csv", row.names = FALSE)
 
 BeeFuncAltitude <- baseBeeFuncAltitude %>%
   mutate(BeeFuncID = paste0("bfAlt", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncAltitude, file="BeeFuncAltitude.csv", row.names = FALSE)
 
 BeeFuncEcologicalAffinity <- baseBeeFuncEcologicalAffinity %>%
   mutate(BeeFuncID = paste0("bfEco", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncEcologicalAffinity, file="BeeFuncEcologicalAffinity.csv", row.names = FALSE)
 
 BeeFuncIUCNStatus <- baseBeeFuncIUCNstatus %>%
   mutate(BeeFuncID = paste0("bfIUCN", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncIUCNStatus, file="BeeFuncIUCNStatus.csv", row.names = FALSE)
 
 BeeFuncNestDepth <- baseBeeFuncNestDepth %>%
   mutate(BeeFuncID = paste0("bfNestDep", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncNestDepth, file="BeeFuncNestDepth.csv", row.names = FALSE)
 
 BeeFuncNestMaterials <- baseBeeFuncNestMaterials %>%
   mutate(BeeFuncID = paste0("bfNestMat", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncNestMaterials, file="BeeFuncNestMaterials.csv", row.names = FALSE)
 
 BeeFuncNestType <- baseBeeFuncNestNestType %>%
   mutate(BeeFuncID = paste0("bfNestTyp", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncNestType, file="BeeFuncNestType.csv", row.names = FALSE)
 
 BeeFuncNestCellNumber <- baseBeeFuncNestCells %>%
   mutate(BeeFuncID = paste0("bfNestCel", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncNestCellNumber, file="BeeFuncNestCellNumber.csv", row.names = FALSE)
 
 BeeFuncNestSlope <- baseBeeFuncNestingSlope %>%
   mutate(BeeFuncID = paste0("bfNestSlo", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncNestSlope, file="BeeFuncNestSlope.csv", row.names = FALSE)
 
 BeeFuncNestSubstrate <- baseBeeFuncNestSubstrate %>%
   mutate(BeeFuncID = paste0("bfNestSub", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncNestSubstrate, file="BeeFuncNestSubstrate.csv", row.names = FALSE)
 
 BeeFuncHabitat <- baseBeeFuncHabitat %>%
   mutate(BeeFuncID = paste0("bfHab", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
   mutate(across(everything(), str_squish)) %>%
-  filter(str_count(LB_NOM, "\\S+") != 3)
+  filter(str_count(LB_NOM, "\\S+") != 3) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 write.csv2(BeeFuncHabitat, "BeeFuncHabitat.csv", row.names = FALSE)
 
 #insert VALID_NAME corresponding to LB_NAME
@@ -172,20 +189,23 @@ InterBeeFuncLectism <- interactionsBaseEn %>%
   distinct() %>%
   mutate(BeeFuncID = paste0("bfLec", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
-mutate(across(everything(), str_squish))
+mutate(across(everything(), str_squish)) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 
 InterBeeFuncParasitism <- interactionsBaseEn %>%
   filter(RELATION_EN == "kleptoparasite of") %>%
   distinct() %>%
 mutate(BeeFuncID = paste0("bfPar", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
-mutate(across(everything(), str_squish))
+mutate(across(everything(), str_squish)) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 
 InterBeeFuncPollination <- interactionsBaseEn %>%
   filter(RELATION_EN == "pollinates") %>%
 mutate(BeeFuncID = paste0("bfPol", row_number())) %>%
   relocate(BeeFuncID, .before = everything()) %>%
-mutate(across(everything(), str_squish))
+mutate(across(everything(), str_squish)) %>%
+  mutate(across(everything(), ~ replace_na(.x, "")))
 
 ## correct recent taxonomy (Ropars et al, in prep)
 BeeFunc <- mget(ls(pattern = "^BeeFunc"), envir = .GlobalEnv)
