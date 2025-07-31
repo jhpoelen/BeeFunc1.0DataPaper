@@ -1,0 +1,189 @@
+{
+  "@context" : [ "http://www.w3.org/ns/csvw", {
+    "@language" : "en"
+  } ],
+  "rdfs:comment" : [ "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/" ],
+  "tables" : [ {
+    "@context" : [ "http://www.w3.org/ns/csvw", {
+      "@language" : "en"
+    } ],
+    "rdfs:comment" : [ "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/" ],
+    "url" : "https://data.indores.fr/api/access/datafile/21620?gbrecs=true",
+    "dcterms:bibliographicCitation" : "Aubouin, L., Genoud, D., Givord-Coupeau, B. et al. BeeFunc, a comprehensive trait database for French bees. Sci Data 12, 1302 (2025). https://doi.org/10.1038/s41597-025-05626-0",
+    "delimiter" : ";",
+    "headerRowCount" : 1,
+    "null" : [ "" ],
+    "sourceTaxonRankName": "species",
+    "tableSchema" : {
+      "columns" : [ {
+        "name" : "BeeFuncID",
+        "titles" : "BeeFuncID",
+        "datatype" : "string"
+      }, {
+        "name" : "VALID_NAME",
+        "titles" : "VALID_NAME",
+        "datatype" : "string"
+      }, {
+        "name" : "CD_NOM",
+        "titles" : "CD_NOM",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonName",
+        "titles" : "LB_NOM",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonAuthorship",
+        "titles" : "LB_AUTHOR",
+        "datatype" : "string"
+      }, {
+        "name" : "RANK",
+        "titles" : "RANK",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonKingdomName",
+        "titles" : "KINGDOM",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonPhylumName",
+        "titles" : "PHYLUM",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonClassName",
+        "titles" : "CLASS",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonOrderName",
+        "titles" : "ORDER",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonFamilyName",
+        "titles" : "FAMILY",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceTaxonGenusName",
+        "titles" : "GENUS",
+        "datatype" : "string"
+      }, {
+        "name" : "GROUP1_INPN",
+        "titles" : "GROUP1_INPN",
+        "datatype" : "string"
+      }, {
+        "name" : "GROUP2_INPN",
+        "titles" : "GROUP2_INPN",
+        "datatype" : "string"
+      }, {
+        "name" : "interactionTypeName",
+        "titles" : "RELATION_EN",
+        "datatype" : "string"
+      }, {
+        "name" : "CD_NOM_02",
+        "titles" : "CD_NOM_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonName",
+        "titles" : "LB_NOM_02",
+        "datatype" : "string"
+      }, {
+        "name" : "VALID_NAME_02",
+        "titles" : "VALID_NAME_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonAuthorship",
+        "titles" : "LB_AUTHOR_02",
+        "datatype" : "string"
+      }, {
+        "name" : "RANK_02",
+        "titles" : "RANK_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonKingdomName",
+        "titles" : "KINGDOM_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonPhylumName",
+        "titles" : "PHYLUM_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonClassName",
+        "titles" : "CLASS_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonOrderName",
+        "titles" : "ORDER_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonFamilyName",
+        "titles" : "FAMILY_02",
+        "datatype" : "string"
+      }, {
+        "name" : "targetTaxonGenusName",
+        "titles" : "GENUS_02",
+        "datatype" : "string"
+      }, {
+        "name" : "GROUP1_INPN_02",
+        "titles" : "GROUP1_INPN_02",
+        "datatype" : "string"
+      }, {
+        "name" : "GROUP2_INPN_02",
+        "titles" : "GROUP2_INPN_02",
+        "datatype" : "string"
+      }, {
+        "name" : "CD_DOC",
+        "titles" : "CD_DOC",
+        "datatype" : "string"
+      }, {
+        "name" : "referenceCitation",
+        "titles" : "SOURCE",
+        "datatype" : "string"
+      }, {
+        "name" : "DOC_URL",
+        "titles" : "DOC_URL",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceSexName",
+        "titles" : "LB_ETAT_SEXE_EN_1",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceSexId",
+        "titles" : "WIKIDATA_SEXE_1",
+        "datatype" : "string"
+      }, {
+        "name" : "CD_ETAT_STADE_1",
+        "titles" : "CD_ETAT_STADE_1",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceLifestageName",
+        "titles" : "LB_ETAT_STADE_EN_1",
+        "datatype" : "string"
+      }, {
+        "name" : "sourceLifestageId",
+        "titles" : "WIKIDATA_STADE_1",
+        "datatype" : "string"
+      }, {
+        "name" : "CD_ETAT_SPECIFICITE",
+        "titles" : "CD_ETAT_SPECIFICITE",
+        "datatype" : "string"
+      }, {
+        "name" : "SPECIFITY",
+        "titles" : "SPECIFITY",
+        "datatype" : "string"
+      }, {
+        "name" : "WIKIDATA_SPECIFICITE",
+        "titles" : "WIKIDATA_SPECIFICITE",
+        "datatype" : "string"
+      }, {
+        "name" : "LB_ETAT_STADE_EN_2",
+        "titles" : "LB_ETAT_STADE_EN_2",
+        "datatype" : "string"
+      }, {
+        "name" : "WIKIDATA_STADE_2",
+        "titles" : "WIKIDATA_STADE_2",
+        "datatype" : "string"
+      }, {
+        "name" : "CD_BIOLINTER_SP",
+        "titles" : "CD_BIOLINTER_SP",
+        "datatype" : "string"
+      } ]
+    }
+  } ]
+}
