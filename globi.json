@@ -8,7 +8,7 @@
       "@language" : "en"
     } ],
     "rdfs:comment" : [ "inspired by https://www.w3.org/TR/2015/REC-tabular-data-model-20151217/" ],
-    "url" : "https://data.indores.fr/api/access/datafile/21620?gbrecs=true",
+    "url" : "dataDescription/BeeFuncPollination.csv",
     "dcterms:bibliographicCitation" : "Aubouin, L., Genoud, D., Givord-Coupeau, B. et al. BeeFunc, a comprehensive trait database for French bees. Sci Data 12, 1302 (2025). https://doi.org/10.1038/s41597-025-05626-0",
     "delimiter" : ";",
     "headerRowCount" : 1,
